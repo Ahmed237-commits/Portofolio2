@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Mohamed Eissa | Full-Stack Developer</title>
+    <meta name="description" content="Professional portfolio of Ahmed Mohamed Eissa, a Full-Stack Developer specializing in modern, scalable web applications.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="dark">
+    <!-- Navigation -->
+    <header class="header glass">
+        <nav class="nav-container">
+            <a href="#" class="logo">AME<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-content fade-in">
+                <h2 class="greeting">Hi, I'm</h2>
+                <h1 class="name">Ahmed Mohamed Eissa</h1>
+                <h3 class="title">Full-Stack Developer</h3>
+                <p class="intro">
+                    Building modern, scalable full-stack web applications with a focus on performance and clean architecture.
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-in">
+                <!-- Profile Image Placeholder or Decorative Element -->
+                <div class="hero-blob"></div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-grid fade-in">
+                <div class="about-text">
+                    <p>
+                        I am a dedicated Full-Stack Developer with extensive experience in building robust applications from the ground up. My expertise spans both frontend and backend systems, allowing me to create seamless, high-performance user experiences.
+                    </p>
+                    <p>
+                        I focus on clean architecture and scalability, ensuring that every project I work on can grow and adapt to real-world demands. I am passionate about using technology to create a positive impact and solve complex problems.
+                    </p>
+                    <div class="experience-badge">
+                        <span class="count">3+</span>
+                        <span class="label">Years of Experience</span>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="image-wrapper glass">
+                        <!-- <img src="assets/profile.jpg" alt="Ahmed Mohamed Eissa"> -->
+                         <div class="placeholder-img">AME</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <h2 class="section-title fade-in">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category glass fade-in">
+                    <h3><i class="fas fa-code"></i> Frontend</h3>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Next.js / React</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass fade-in">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>Rest API Development</li>
+                        <li>System Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass fade-in">
+                    <h3><i class="fas fa-database"></i> Database</h3>
+                    <ul>
+                        <li>MongoDB</li>
+                        <li>Mongoose</li>
+                        <li>Data Modeling</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass fade-in">
+                    <h3><i class="fas fa-tools"></i> Tools & Practices</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>REST APIs</li>
+                        <li>Clean Code principles</li>
+                        <li>Scalable Architecture</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Objective Section -->
+        <section id="objective" class="objective glass fade-in">
+            <div class="objective-content">
+                <h2 class="section-title">Career Objective</h2>
+                <p>
+                    "My goal is to continue building scalable, high-quality web applications that solve real-world problems. I am committed to growing as a professional Full-Stack Developer, staying at the forefront of technology, and working on impactful projects that push the boundaries of what's possible in the digital space."
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+        <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card glass fade-in">
+                    <div class="project-image">
+                        <img class="placeholder-img" alt="Healthy-Life" src="/Screenshot 2025-12-22 082617.png">
+                    </div>
+                    <div class="project-info">
+                        <h3>Healthy-Life</h3>
+                        <p>A comprehensive full-stack health platform that centralizes health-related services into one efficient system.</p>
+                        <ul class="project-tags">
+                            <li>Next.js</li>
+                            <li>Node.js</li>
+                            <li>MongoDB</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/Ahmed237-commits/My-Project" title="View GitHub"><i class="fab fa-github"></i></a>
+                            <!-- <a href="" title="Live Demo"><i class="fas fa-external-link-alt"></i></a> -->
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Additional Project Placeholders -->
+                <article class="project-card glass fade-in">
+                    <div class="project-image">
+                        <img class="placeholder-img" alt="E-Commerce API" src="/Screenshot 2026-04-19 220547.png">
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce</h3>
+                        <p>Robust backend API for e-commerce focusing on security and performance optimization.</p>
+                        <ul class="project-tags">
+                            <li>Express</li>
+                            <li>JWT</li>
+                            <li>MongoDB</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/Ahmed237-commits/e-commerce.git" title="View GitHub"><i class="fab fa-github"></i></a>
+                            <!-- <a href="" title="Live Demo"><i class="fas fa-external-link-alt"></i></a> -->
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card glass fade-in">
+                    <div class="project-image">
+                        <img class="placeholder-img" alt="Portfolio v1" src="/Screenshot 2026-04-19 220341.png">
+                    </div>
+                    <div class="project-info">
+                        <h3>Code Mastery Zone</h3>
+                        <p>A platform for mastering coding skills through hands-on projects and challenges.</p>
+                        <ul class="project-tags">
+                            <li>Next.js</li>
+                            <li>Tailwind CSS</li>
+                            <li>Express.js</li>
+                            <li>MongoDB</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/Ahmed237-commits/code-mastery-zone" title="View GitHub"><i class="fab fa-github"></i></a>
+                            <!-- <a href="" title="Live Demo"><i class="fas fa-external-link-alt"></i></a> -->
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience">
+            <h2 class="section-title fade-in">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <span class="date">Present</span>
+                        <h3>Full-Stack Developer</h3>
+                        <p class="focus">Focus: System Design & Scalability</p>
+                        <ul>
+                            <li>Designing and implementing scalable system architectures.</li>
+                            <li>Developing robust REST APIs and optimizing backend performance.</li>
+                            <li>Integrating frontend and backend systems for seamless UX.</li>
+                            <li>Solving complex real-world problems through innovative code.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <h2 class="section-title fade-in">Expertise & Services</h2>
+            <div class="services-grid">
+                <div class="service-card glass fade-in">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Full-Stack Development</h3>
+                    <p>Building end-to-end web applications using modern stacks.</p>
+                </div>
+                <div class="service-card glass fade-in">
+                    <i class="fas fa-api"></i>
+                    <h3>REST API Development</h3>
+                    <p>Designing secure and high-performance backend interfaces.</p>
+                </div>
+                <div class="service-card glass fade-in">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Performance Optimization</h3>
+                    <p>Enhancing site speed, accessibility, and SEO efficiency.</p>
+                </div>
+                <div class="service-card glass fade-in">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Technical Consulting</h3>
+                    <p>Strategic planning for scalable and maintainable solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-container">
+                <form class="contact-form glass fade-in">
+                    <div class="form-group">
+                        <input type="text" class="name-input" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="email-input" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Message" id="message" rows="5" required></textarea>
+                    </div> 
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+
+                </form>
+                
+                <div class="social-links fade-in">
+                    <a href="https://github.com/Ahmed237-commits" class="social-btn glass"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-eissa-225411373" class="social-btn glass"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/ahmed.eissa16/" class="social-btn glass"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:aethefifthofjuly@gmail.com" class="social-btn glass"><i class="fab fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Ahmed Mohamed Eissa. All Rights Reserved.</p>
+            <a href="#hero" class="back-to-top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

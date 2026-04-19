@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>404 • الصفحة غير موجودة</title>
+  <style>
+    /* إعادة ضبط القيم الأساسية */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Segoe UI', 'Tajawal', system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0b0c1e;  /* لون احتياطي */
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* خلفية النجوم المتحركة (Canvas) */
+    #starfield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;  /* حتى لا تمنع التفاعل مع الأزرار */
+    }
+
+    /* بطاقة المحتوى الرئيسية */
+    .notfound-card {
+      position: relative;
+      z-index: 10;
+      background: rgba(18, 22, 48, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(120, 180, 255, 0.25);
+      border-radius: 48px;
+      padding: 3.5rem 3rem;
+      max-width: 650px;
+      width: 90%;
+      margin: 1.5rem;
+      text-align: center;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(70, 130, 255, 0.1) inset;
+      animation: float-in 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.3s ease;
+    }
+
+    .notfound-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 35px 60px rgba(0, 0, 0, 0.6), 0 0 0 1.5px rgba(100, 180, 255, 0.3) inset;
+    }
+
+    /* تأثير الظهور */
+    @keyframes float-in {
+      0% {
+        opacity: 0;
+        transform: scale(0.92) translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* رقم 404 كبير مع تأثير ضوئي */
+    .glitch-404 {
+      font-size: clamp(8rem, 25vw, 13rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+      color: #ffffff;
+      text-shadow: 
+        0 0 15px #3b7fff,
+        0 0 45px #1e4fc7,
+        4px 4px 0 #0a1852;
+      position: relative;
+      display: inline-block;
+      animation: subtle-pulse 3s infinite alternate;
+    }
+
+    @keyframes subtle-pulse {
+      0% { text-shadow: 0 0 15px #3b7fff, 0 0 45px #1e4fc7, 4px 4px 0 #0a1852; }
+      100% { text-shadow: 0 0 25px #6b9aff, 0 0 65px #2f6ad0, 6px 6px 0 #0f1f5e; }
+    }
+
+    /* تأثير تشويش خفيف عند المرور (اختياري) */
+    .glitch-404:hover {
+      animation: glitch-skew 0.4s ease;
+    }
+
+    @keyframes glitch-skew {
+      0% { transform: skew(0deg); }
+      20% { transform: skew(2deg); text-shadow: -4px 0 #ff4d9a, 4px 0 #4df0ff; }
+      40% { transform: skew(-2deg); text-shadow: 3px 0 #ff4d9a, -3px 0 #4df0ff; }
+      60% { transform: skew(1deg); }
+      80% { transform: skew(-1deg); }
+      100% { transform: skew(0deg); }
+    }
+
+    /* رسالة الخطأ */
+    .error-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #eef4ff;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0,20,80,0.7);
+      letter-spacing: -0.01em;
+    }
+
+    .error-message {
+      font-size: 1.2rem;
+      color: #b8ceff;
+      margin-bottom: 2.8rem;
+      line-height: 1.6;
+      font-weight: 400;
+      opacity: 0.9;
+      max-width: 450px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* زر العودة للرئيسية */
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #1a3a8a 0%, #0e205e 100%);
+      border: none;
+      border-radius: 60px;
+      padding: 1rem 2.6rem;
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 12px 25px -5px rgba(0, 20, 80, 0.7), 0 0 0 1px #3f6ad8 inset;
+      backdrop-filter: blur(5px);
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+
+    .home-button:hover {
+      background: linear-gradient(135deg, #2650b0 0%, #16337a 100%);
+      box-shadow: 0 18px 30px -5px #0a1e4e, 0 0 0 1.5px #7ba4ff inset;
+      transform: scale(1.02);
+      gap: 16px;
+    }
+
+    .home-button:active {
+      transform: scale(0.98);
+      box-shadow: 0 8px 15px -3px #030a1f;
+    }
+
+    /* أيقونة بسيطة (unicode) */
+    .home-button span {
+      font-size: 1.5rem;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+
+    .home-button:hover span {
+      transform: translateX(-6px);
+    }
+
+    /* تذييل صغير جداً */
+    .footer-note {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: #8ea9e0;
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+
+    /* جعل التصميم متجاوب مع الشاشات الصغيرة */
+    @media (max-width: 480px) {
+      .notfound-card {
+        padding: 2.5rem 1.5rem;
+        border-radius: 36px;
+      }
+      .error-title {
+        font-size: 1.7rem;
+      }
+      .error-message {
+        font-size: 1rem;
+      }
+      .home-button {
+        padding: 0.9rem 1.8rem;
+        font-size: 1.1rem;
+      }
+    }
+
+    /* دعم الاتجاه RTL بشكل أفضل */
+    [dir="rtl"] .home-button span {
+      transform: scaleX(-1); /* عكس السهم ليتناسب مع العربية */
+    }
+
+    [dir="rtl"] .home-button:hover span {
+      transform: scaleX(-1) translateX(6px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- لوحة الرسم للنجوم (يتم التحكم بها عبر JavaScript) -->
+  <canvas id="starfield"></canvas>
+
+  <!-- بطاقة 404 -->
+  <div class="notfound-card">
+    <div class="glitch-404">404</div>
+    <div class="error-title">الصفحة غير موجودة</div>
+    <div class="error-message">
+      يبدو أنك ضللت الطريق في الفضاء الرقمي. الصفحة التي تبحث عنها قد تكون انتقلت أو حُذفت.
+    </div>
+    
+    <!-- زر العودة (يمكن تعديل الرابط حسب الحاجة) -->
+    <a href="/" class="home-button" id="homeBtn">
+      <span>🏠</span> العودة للرئيسية
+    </a>
+    
+    <div class="footer-note">
+      <span>✦ رحلة آمنة ✦</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ---------- 1. إعداد خلفية النجوم المتحركة (Canvas) ----------
+      const canvas = document.getElementById('starfield');
+      const ctx = canvas.getContext('2d');
+      
+      let width, height;
+      let stars = [];
+      const STAR_COUNT = 180;        // عدد النجوم
+      const MAX_DEPTH = 32;          // للعمق (اختلاف السرعة)
+      
+      // إعدادات الألوان
+      const starColors = [
+        'rgba(255, 255, 255, ',    // أبيض
+        'rgba(210, 230, 255, ',    // أزرق فاتح
+        'rgba(255, 240, 200, ',    // دافيء
+        'rgba(200, 220, 255, '     // أزرق ثلجي
+      ];
+
+      // دالة لتوليد نجم عشوائي
+      function createStar(withDepth = true) {
+        return {
+          x: Math.random(),
+          y: Math.random(),
+          radius: Math.random() * 2.2 + 0.8,          // حجم النجم
+          depth: withDepth ? Math.random() * MAX_DEPTH : 5,
+          colorIndex: Math.floor(Math.random() * starColors.length),
+          twinkleSpeed: 0.002 + Math.random() * 0.015,
+          twinklePhase: Math.random() * Math.PI * 2,
+          baseAlpha: 0.5 + Math.random() * 0.5,       // شفافية أساسية
+        };
+      }
+
+      // تهيئة النجوم
+      function initStars() {
+        stars = [];
+        for (let i = 0; i < STAR_COUNT; i++) {
+          stars.push(createStar(true));
+        }
+        // إضافة بعض النجوم الخافتة الثابتة نسبياً
+        for (let i = 0; i < 30; i++) {
+          let s = createStar(false);
+          s.depth = 1 + Math.random() * 5;
+          s.radius *= 0.7;
+          stars.push(s);
+        }
+      }
+
+      // ضبط أبعاد canvas
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      // رسم الإطار (يتم استدعاؤها في كل إطار)
+      function drawStars(timestamp) {
+        if (!width || !height) return;
+        
+        ctx.clearRect(0, 0, width, height);
+        
+        // تأثير التدرج الداكن في الخلفية لتعميق الشعور بالفضاء
+        const gradient = ctx.createRadialGradient(
+          width * 0.5, height * 0.4, 10,
+          width * 0.5, height * 0.5, Math.max(width, height) * 0.8
+        );
+        gradient.addColorStop(0, '#070b1f');
+        gradient.addColorStop(0.7, '#0f1433');
+        gradient.addColorStop(1, '#030514');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // رسم كل نجم مع تأثير الوميض والحركة البطيئة
+        const time = timestamp || Date.now();
+        
+        stars.forEach(star => {
+          // حساب الشفافية مع الوميض (باستخدام sin)
+          const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase);
+          // مدى الوميض: بين 0.5 و 1.0 مضروب في الشفافية الأساسية
+          const alphaFactor = 0.6 + 0.4 * twinkle;
+          let alpha = star.baseAlpha * alphaFactor;
+          
+          // تأثير العمق: النجوم الأبعد (depth أكبر) تكون أبطأ وأكثر خفوتاً
+          const depthFactor = Math.max(0.3, 1 - (star.depth / MAX_DEPTH) * 0.5);
+          alpha *= depthFactor;
+          
+          // اختيار اللون مع الشفافية
+          const colorStyle = starColors[star.colorIndex] + alpha + ')';
+          
+          // حساب الموقع الفعلي (مع حركة طفيفة حسب العمق لمحاكاة السفر)
+          // حركة بطيئة جداً في اتجاه معين (يمين وأسفل قليلاً) حسب العمق
+          const moveX = (time * 0.002 * (1 / (star.depth + 1))) % 1;
+          const moveY = (time * 0.001 * (1 / (star.depth + 2))) % 1;
+          
+          let drawX = (star.x + moveX) % 1.0;
+          let drawY = (star.y + moveY) % 1.0;
+          
+          // إذا خرج النجم عن الحدود نعيده للجهة الأخرى بسلاسة
+          // (نظام لانهائي)
+          if (drawX < 0) drawX += 1.0;
+          if (drawY < 0) drawY += 1.0;
+          
+          const posX = drawX * width;
+          const posY = drawY * height;
+          
+          // رسم النجمة (دائرة)
+          ctx.beginPath();
+          ctx.arc(posX, posY, star.radius * (0.8 + 0.3 * twinkle), 0, Math.PI * 2);
+          
+          // إضافة توهج حول النجوم الأكبر
+          ctx.shadowColor = 'rgba(180, 210, 255, 0.8)';
+          ctx.shadowBlur = 10 * depthFactor + 4 * twinkle;
+          ctx.fillStyle = colorStyle;
+          ctx.fill();
+          
+          // إعادة تعيين shadow لبقية العناصر (لا نريدها تؤثر على النجوم التالية)
+          ctx.shadowBlur = 0;
+          
+          // أحياناً نضيف هالة صغيرة جداً للنجوم اللامعة
+          if (star.radius > 1.8 && alpha > 0.7) {
+            ctx.beginPath();
+            ctx.arc(posX, posY, star.radius * 1.8, 0, Math.PI * 2);
+            const gradient = ctx.createRadialGradient(posX, posY, 0, posX, posY, star.radius * 2.5);
+            gradient.addColorStop(0, starColors[star.colorIndex] + (alpha*0.4) + ')');
+            gradient.addColorStop(1, 'rgba(30, 50, 120, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+          }
+        });
+        
+        // رسم بعض خطوط الغبار الكوني الخفيفة (اختياري)
+        ctx.fillStyle = 'rgba(25, 40, 90, 0.03)';
+        ctx.fillRect(0, 0, width, height);
+        
+        requestAnimationFrame(drawStars);
+      }
+
+      // ---------- 2. تهيئة كل شيء ----------
+      function init() {
+        resizeCanvas();
+        initStars();
+        // بدء حلقة الرسم
+        requestAnimationFrame(drawStars);
+        
+        // تحديث الأبعاد عند تغيير حجم النافذة
+        window.addEventListener('resize', () => {
+          resizeCanvas();
+          // لا داعي لإعادة إنشاء النجوم
+        });
+        
+        // إضافة تأثير بسيط: عند الضغط على زر home يمكن منع السلوك الافتراضي إذا كان الرابط "#"
+        const homeBtn = document.getElementById('homeBtn');
+        if (homeBtn) {
+          homeBtn.addEventListener('click', function(e) {
+            // إذا كان الرابط يشير إلى "#" أو فارغ نمنع الانتقال ونعرض رسالة (للتوضيح)
+            const href = this.getAttribute('href');
+            if (href === '#' || href === '' || href === '/' && window.location.pathname === '/') {
+              e.preventDefault();
+              // تأثير بصري بسيط بدلاً من الانتقال (لأنه صفحة تجريبية)
+              document.querySelector('.notfound-card').style.transform = 'scale(0.99)';
+              setTimeout(() => {
+                document.querySelector('.notfound-card').style.transform = '';
+              }, 150);
+              // يمكنك توجيه المستخدم للصفحة الرئيسية الفعلية بتعديل الرابط أعلاه
+              console.log('🏠 يمكنك تعديل الرابط إلى صفحتك الرئيسية.');
+            }
+            // وإلا سيتم الانتقال بشكل طبيعي
+          });
+        }
+      }
+
+      // تشغيل التهيئة
+      init();
+      
+    })();
+  </script>
+
+  <!-- ملاحظة: الزر موجه إلى '/' يمكنك تغييره بسهولة إلى رابط موقعك -->
+</body>
+</html>
